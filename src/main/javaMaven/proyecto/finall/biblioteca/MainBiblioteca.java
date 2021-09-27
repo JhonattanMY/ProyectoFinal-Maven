@@ -81,7 +81,6 @@ public class MainBiblioteca {
 
 					Libro cedulaEstudiante = new Libro();
 					cedulaEstudiante.setEstudiante(cedula);
-					baseDatosLibro.add(cedulaEstudiante);
 
 					boolean resultadoLocal2;
 					for (int i = 0; i < baseDatosLibro.size(); i++) {
@@ -92,25 +91,9 @@ public class MainBiblioteca {
 
 						if (resultadoLocal2 == true) {
 
-							if (estado.getEstado().equals(" ")) {
-								String nuevoEstado = "Reservado";
-								estado.setEstado(nuevoEstado);
-								baseDatosLibro.add(estado);
-
-								LocalDate diaHoyReserva = LocalDate.now();
-								LocalDate diaFinReserva = diaHoyReserva.plusDays(5);
-								System.out.println("Fecha de reserva: " + diaHoyReserva);
-								System.out.println("Fecha de entrega: " + diaFinReserva);
-								System.out.println("Numero del cedula del estudiante: " + cedula.getCedula());
-
-							} else if (estado.getEstado() == "Reservado" || estado.getEstado() == "Prestado") {
-
-								LocalDate diaHoyReserva2 = LocalDate.now();
-								LocalDate diaFinReserva2 = diaHoyReserva2.plusDays(5);
-								System.out.println("El libro no esta disponible por el momento");
-								System.out.println("El libro estara disponible el: " + diaFinReserva2);
-								System.out.println("Paselo a ver en la biblioteca es dia");
-							}
+							Libro estadoLi = new Libro();
+							estadoLi.estadoLibro();
+							System.out.println("Numero del cedula del estudiante: " + cedula.getCedula());
 
 						} else {
 							System.out.println("No se a encontrado el libro");
