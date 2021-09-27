@@ -9,7 +9,7 @@ public class Libro {
 	private String Editorial;
 	private int paginas;
 	private int precio;
-	private String estado = "Disponible";
+	private String estado;
 
 	// VARIABLEs DE REFERENCIA
 	private Estudiante estudiante;

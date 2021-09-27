@@ -27,6 +27,7 @@ public class MainBiblioteca {
 			System.out.println("===========================");
 			System.out.println("1. Estudiante");
 			System.out.println("2. Bibliotecario");
+			System.out.println("3. SALIR");
 			System.out.println("===========================");
 			opcion = leeInt.nextInt();
 
@@ -76,12 +77,10 @@ public class MainBiblioteca {
 					System.out.println("Ingrese Codigo del libro a reservar: ");
 					String libroReserva = lee.nextLine();
 					System.out.println("Ingrese cedula del estudiante: ");
-					String cedulaEst = lee.nextLine();
+					cedula.setCedula(lee.nextLine());
 
-					Estudiante saveCedula = new Estudiante();
-					saveCedula.setCedula(cedulaEst);
 					Libro cedulaEstudiante = new Libro();
-					cedulaEstudiante.getEstudiante().getCedula();
+					cedulaEstudiante.setEstudiante(cedula);
 					baseDatosLibro.add(cedulaEstudiante);
 
 					boolean resultadoLocal2;
@@ -93,23 +92,23 @@ public class MainBiblioteca {
 
 						if (resultadoLocal2 == true) {
 
-							if (estado.getEstado().equals("Disponible")) {
+							if (estado.getEstado().equals(null)) {
 								String nuevoEstado = "Reservado";
 								estado.setEstado(nuevoEstado);
 								baseDatosLibro.add(estado);
 
-								LocalDate diaHoy = LocalDate.now();
-								LocalDate diaFin = diaHoy.plusDays(5);
-								System.out.println("Fecha de reserva: " + diaHoy);
-								System.out.println("Dia de entrega: " + diaFin);
+								LocalDate diaHoyReserva = LocalDate.now();
+								LocalDate diaFinReserva = diaHoyReserva.plusDays(5);
+								System.out.println("Fecha de reserva: " + diaHoyReserva);
+								System.out.println("Fecha de entrega: " + diaFinReserva);
 								System.out.println("Numero del cedula del estudiante: " + cedula.getCedula());
 
 							} else if (estado.getEstado() == "Reservado" || estado.getEstado() == "Prestado") {
 
-								LocalDate diaHoy2 = LocalDate.now();
-								LocalDate diaFin2 = diaHoy2.plusDays(5);
+								LocalDate diaHoyReserva2 = LocalDate.now();
+								LocalDate diaFinReserva2 = diaHoyReserva2.plusDays(5);
 								System.out.println("El libro no esta disponible por el momento");
-								System.out.println("El libro estara disponible el: " + diaFin2);
+								System.out.println("El libro estara disponible el: " + diaFinReserva2);
 								System.out.println("Paselo a ver en la biblioteca es dia");
 							}
 
@@ -255,13 +254,7 @@ public class MainBiblioteca {
 						System.out.println("Ingrese codigo del libro: ");
 						String libroAplazado = lee.nextLine();
 						System.out.println("Ingrese numero de cedula del estudiante al que presto libro: ");
-						String cedula4 = lee.nextLine();
-
-						Estudiante saveCedula = new Estudiante();
-						saveCedula.setCedula(cedula4);
-						Libro cedulaEstudiante = new Libro();
-						cedulaEstudiante.getEstudiante().getCedula();
-						baseDatosLibro.add(cedulaEstudiante);
+						String cedulaEs = lee.nextLine();
 
 						boolean resultado = false;
 
@@ -270,9 +263,6 @@ public class MainBiblioteca {
 							Libro busqueda3 = baseDatosLibro.get(i);
 							String codigoLibro = busqueda3.getCodigoLibro();
 							boolean resultadoLocal = libroAplazado.equals(codigoLibro);
-
-//							Libro busqueda4 = baseDatosLibro.get(i);
-//							boolean resultadoLocal2 = cedula4.equals(busqueda4.getEstudiante().getCedula());
 
 							if (resultadoLocal == true) {
 								resultado = true;
@@ -305,11 +295,12 @@ public class MainBiblioteca {
 						System.out.println("Esa opcion no se ha encontrado");
 					}
 				} while (opcionSalirBucle != 2);
-			} else {
+			} else if (opcion > 3) {
 				System.out.println("Esa opcion es inexistente\n");
-
 			}
+
 		} while (opcion != 3);
+		System.out.println("====== QUE TENGA UN BUEN DIA =======");
 	}
 
 }
