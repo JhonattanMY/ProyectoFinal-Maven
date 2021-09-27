@@ -92,7 +92,7 @@ public class MainBiblioteca {
 
 						if (resultadoLocal2 == true) {
 
-							if (estado.getEstado().equals(null)) {
+							if (estado.getEstado().equals(" ")) {
 								String nuevoEstado = "Reservado";
 								estado.setEstado(nuevoEstado);
 								baseDatosLibro.add(estado);
@@ -226,11 +226,11 @@ public class MainBiblioteca {
 
 								for (int i = 0; i < baseDatosLibro.size(); i++) {
 
-									Libro busqueda3 = baseDatosLibro.get(i);
-									String codigoLi = busqueda3.getCodigoLibro();
-									Boolean resultadoLocal3 = libroPrestado.equals(codigoLi);
+									Libro busquedaN = baseDatosLibro.get(i);
+									String codigoLib = busquedaN.getCodigoLibro();
+									Boolean resultadoLocalN = libroPrestado.equals(codigoLib);
 
-									if (resultadoLocal3 == true) {
+									if (resultadoLocalN == true) {
 										String nuevoEstado = "Prestado";
 										estado.setEstado(nuevoEstado);
 										baseDatosLibro.add(estado);
@@ -260,11 +260,11 @@ public class MainBiblioteca {
 
 						for (int i = 0; i < baseDatosLibro.size(); i++) {
 
-							Libro busqueda3 = baseDatosLibro.get(i);
-							String codigoLibro = busqueda3.getCodigoLibro();
-							boolean resultadoLocal = libroAplazado.equals(codigoLibro);
+							Libro busquedaNue = baseDatosLibro.get(i);
+							String codigoLibro = busquedaNue.getCodigoLibro();
+							boolean resultadoLocalNue = libroAplazado.equals(codigoLibro);
 
-							if (resultadoLocal == true) {
+							if (resultadoLocalNue == true) {
 								resultado = true;
 							}
 
