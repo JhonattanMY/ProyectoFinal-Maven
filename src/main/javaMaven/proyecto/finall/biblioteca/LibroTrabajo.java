@@ -4,6 +4,7 @@ public class LibroTrabajo extends Libro {
 
 	private String codigoAutorizacion;
 
+
         //METODOS GET Y SET
 	public String getCodigoAutorizacion() {
 		return codigoAutorizacion;
